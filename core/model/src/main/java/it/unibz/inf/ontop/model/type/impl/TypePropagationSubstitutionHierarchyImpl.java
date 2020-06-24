@@ -6,11 +6,12 @@ import it.unibz.inf.ontop.model.type.ConcreteNumericRDFDatatype;
 import it.unibz.inf.ontop.model.type.TypePropagationSubstitutionHierarchy;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 
+import java.io.Serializable;
 import java.util.stream.Stream;
 
 
 public class TypePropagationSubstitutionHierarchyImpl extends TermTypeHierarchyImpl<ConcreteNumericRDFDatatype>
-        implements TypePropagationSubstitutionHierarchy {
+        implements TypePropagationSubstitutionHierarchy, Serializable {
 
     protected TypePropagationSubstitutionHierarchyImpl(ConcreteNumericRDFDatatype topDatatype) {
         this(ImmutableList.of(topDatatype));

@@ -135,7 +135,7 @@
         <r2rml-api.version>0.6.0</r2rml-api.version>
         <jetty.version>9.4.6.v20170531</jetty.version>
         <hikari-cp.version>2.6.3</hikari-cp.version>
-        <commons-rdf.version>0.5.0</commons-rdf.version>
+        <commons-rdf.version>0.5.0-ser</commons-rdf.version>
         <guava.version>18.0</guava.version>
         <jsqlparser.version>3.1</jsqlparser.version>
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>

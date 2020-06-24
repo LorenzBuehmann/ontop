@@ -10,13 +10,14 @@ import it.unibz.inf.ontop.substitution.SubstitutionFactory;
 import it.unibz.inf.ontop.substitution.Var2VarSubstitution;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Wrapper above an ImmutableMap<Variable, ImmutableTerm> map.
  */
 
-public class ImmutableSubstitutionImpl<T extends ImmutableTerm> extends AbstractImmutableSubstitutionImpl<T> {
+public class ImmutableSubstitutionImpl<T extends ImmutableTerm> extends AbstractImmutableSubstitutionImpl<T> implements Serializable {
 
     private final ImmutableMap<Variable, T> map;
 

@@ -1,5 +1,6 @@
 package it.unibz.inf.ontop.substitution.impl;
 
+import java.io.Serializable;
 import java.util.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -21,7 +22,7 @@ import java.util.stream.Stream;
  */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public abstract class AbstractImmutableSubstitutionImpl<T  extends ImmutableTerm>
-        extends AbstractProtoSubstitution<T> implements ImmutableSubstitution<T> {
+        extends AbstractProtoSubstitution<T> implements ImmutableSubstitution<T>, Serializable {
 
     final AtomFactory atomFactory;
     final SubstitutionFactory substitutionFactory;

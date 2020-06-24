@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import it.unibz.inf.ontop.iq.node.VariableNullability;
 import it.unibz.inf.ontop.model.type.TermTypeInference;
 
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
  *
  * In the future, every term should be immutable
  */
-public interface ImmutableTerm {
+public interface ImmutableTerm extends Serializable {
 
     /**
      * Returns true if and only if the term is a NULL Constant.

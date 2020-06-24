@@ -43,11 +43,12 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
 
 import javax.annotation.Nullable;
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Stream;
 
 @Singleton
-public class TermFactoryImpl implements TermFactory {
+public class TermFactoryImpl implements TermFactory, Serializable {
 
 	private final TypeFactory typeFactory;
 	private final FunctionSymbolFactory functionSymbolFactory;

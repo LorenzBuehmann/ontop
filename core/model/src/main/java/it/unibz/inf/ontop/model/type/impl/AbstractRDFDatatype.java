@@ -8,9 +8,10 @@ import it.unibz.inf.ontop.model.vocabulary.RDFS;
 import it.unibz.inf.ontop.model.vocabulary.XSD;
 import org.apache.commons.rdf.api.IRI;
 
+import java.io.Serializable;
 import java.util.function.Function;
 
-public abstract class AbstractRDFDatatype extends RDFTermTypeImpl implements RDFDatatype {
+public abstract class AbstractRDFDatatype extends RDFTermTypeImpl implements RDFDatatype, Serializable {
 
     private final IRI datatypeIRI;
 

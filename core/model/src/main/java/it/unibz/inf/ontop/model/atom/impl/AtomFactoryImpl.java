@@ -9,10 +9,11 @@ import it.unibz.inf.ontop.model.vocabulary.RDF;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 import org.apache.commons.rdf.api.IRI;
 
+import java.io.Serializable;
 import java.util.stream.IntStream;
 
 
-public class AtomFactoryImpl implements AtomFactory {
+public class AtomFactoryImpl implements AtomFactory, Serializable {
 
     private final TriplePredicate triplePredicate;
     private final QuadPredicate quadPredicate;

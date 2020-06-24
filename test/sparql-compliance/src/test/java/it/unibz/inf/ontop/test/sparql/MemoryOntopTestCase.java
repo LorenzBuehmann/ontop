@@ -37,6 +37,7 @@ public abstract class MemoryOntopTestCase extends TestCase {
     @Override
     public void runTest() throws Exception {
         assumeTrue(!ignoredTests.contains(testIRI));
+        if(!testIRI.contains("bind01")) return;
 
         MemoryTestExecutor executor = new MemoryTestExecutor(testIRI, getName(), queryFileURL, resultFileURL, dataSet, laxCardinality, checkOrder);
         executor.runTest();

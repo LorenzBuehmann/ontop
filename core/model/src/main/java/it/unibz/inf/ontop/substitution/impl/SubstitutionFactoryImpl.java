@@ -13,10 +13,11 @@ import it.unibz.inf.ontop.utils.CoreUtilsFactory;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 import it.unibz.inf.ontop.utils.VariableGenerator;
 
+import java.io.Serializable;
 import java.util.AbstractMap;
 import java.util.Map;
 
-public class SubstitutionFactoryImpl implements SubstitutionFactory {
+public class SubstitutionFactoryImpl implements SubstitutionFactory, Serializable {
 
     private final AtomFactory atomFactory;
     private final TermFactory termFactory;

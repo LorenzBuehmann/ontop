@@ -25,6 +25,11 @@ public abstract class AbstractDataAtomImpl<P extends AtomPredicate>
     @Nullable
     private String string;
 
+    public AbstractDataAtomImpl() {
+        this.predicate = null;
+        this.arguments = null;
+    }
+
     protected AbstractDataAtomImpl(P predicate, ImmutableList<? extends VariableOrGroundTerm> variableOrGroundTerms) {
         this.predicate = predicate;
         this.arguments = variableOrGroundTerms;

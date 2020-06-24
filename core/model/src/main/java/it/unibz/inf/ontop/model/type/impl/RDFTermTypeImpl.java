@@ -5,9 +5,12 @@ import it.unibz.inf.ontop.model.type.DBTypeFactory;
 import it.unibz.inf.ontop.model.type.RDFTermType;
 import it.unibz.inf.ontop.model.type.TermTypeAncestry;
 
+import java.io.Serializable;
 import java.util.function.Function;
 
 public class RDFTermTypeImpl extends TermTypeImpl implements RDFTermType {
+
+    interface SerFunc<T,R> extends Function<T,R>, Serializable {}
 
     private final Function<DBTypeFactory, DBTermType> closestDBTypeSupplier;
 

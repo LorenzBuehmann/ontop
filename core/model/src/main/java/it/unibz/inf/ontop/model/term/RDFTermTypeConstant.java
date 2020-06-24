@@ -1,5 +1,7 @@
 package it.unibz.inf.ontop.model.term;
 
+import java.io.Serializable;
+
 import it.unibz.inf.ontop.model.type.MetaRDFTermType;
 import it.unibz.inf.ontop.model.type.RDFTermType;
 
@@ -12,7 +14,7 @@ import it.unibz.inf.ontop.model.type.RDFTermType;
  * Plays at a "meta-level".
  *
  */
-public interface RDFTermTypeConstant extends NonNullConstant {
+public interface RDFTermTypeConstant extends NonNullConstant, Serializable {
 
     @Override
     MetaRDFTermType getType();

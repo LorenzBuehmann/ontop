@@ -1,9 +1,11 @@
 package it.unibz.inf.ontop.model.type.impl;
 
+import java.io.Serializable;
+
 import it.unibz.inf.ontop.model.type.DBTermType;
 import it.unibz.inf.ontop.model.type.TermTypeAncestry;
 
-public abstract class DBTermTypeImpl extends TermTypeImpl implements DBTermType {
+public abstract class DBTermTypeImpl extends TermTypeImpl implements DBTermType, Serializable {
 
     private final String name;
 

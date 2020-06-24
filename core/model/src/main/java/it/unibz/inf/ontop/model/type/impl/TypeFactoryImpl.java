@@ -11,6 +11,7 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
 
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,7 +22,7 @@ import static it.unibz.inf.ontop.model.type.impl.SimpleRDFDatatype.createSimpleA
 import static it.unibz.inf.ontop.model.type.impl.SimpleRDFDatatype.createSimpleConcreteRDFDatatype;
 
 @Singleton
-public class TypeFactoryImpl implements TypeFactory {
+public class TypeFactoryImpl implements TypeFactory, Serializable {
 
 	// Only builds these TermTypes once.
 	private final Map<IRI, RDFDatatype> datatypeCache = new ConcurrentHashMap<>();

@@ -1,5 +1,7 @@
 package it.unibz.inf.ontop.substitution.impl;
 
+import java.io.Serializable;
+
 import com.google.common.collect.ImmutableList;
 import it.unibz.inf.ontop.model.term.*;
 import it.unibz.inf.ontop.model.term.functionsymbol.BooleanFunctionSymbol;
@@ -7,7 +9,7 @@ import it.unibz.inf.ontop.model.term.functionsymbol.FunctionSymbol;
 import it.unibz.inf.ontop.substitution.ProtoSubstitution;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 
-public abstract class AbstractProtoSubstitution<T extends ImmutableTerm> implements ProtoSubstitution<T> {
+public abstract class AbstractProtoSubstitution<T extends ImmutableTerm> implements ProtoSubstitution<T>, Serializable {
 
     final TermFactory termFactory;
 
