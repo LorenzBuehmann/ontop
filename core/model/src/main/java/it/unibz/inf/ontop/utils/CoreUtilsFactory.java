@@ -8,6 +8,7 @@ import it.unibz.inf.ontop.iq.tools.ProjectionDecomposer;
 import it.unibz.inf.ontop.model.term.ImmutableFunctionalTerm;
 import it.unibz.inf.ontop.model.term.Variable;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 /**
  * Accessible through Guice (recommended) or through CoreSingletons.
  */
-public interface CoreUtilsFactory {
+public interface CoreUtilsFactory extends Serializable {
 
     VariableGenerator createVariableGenerator(Collection<Variable> knownVariables);
 

@@ -1,6 +1,7 @@
 package it.unibz.inf.ontop.model.type.impl;
 
 import it.unibz.inf.ontop.model.type.*;
+import it.unibz.inf.ontop.utils.SerFunc;
 import org.apache.commons.rdf.api.IRI;
 
 import java.util.Optional;
@@ -15,7 +16,7 @@ public class SimpleRDFDatatype extends AbstractRDFDatatype {
      * Concrete
      */
     protected SimpleRDFDatatype(IRI datatypeIRI, TermTypeAncestry parentAncestry,
-                                Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         super(datatypeIRI, parentAncestry, closestDBTypeFct);
     }
 
@@ -27,7 +28,7 @@ public class SimpleRDFDatatype extends AbstractRDFDatatype {
     }
 
     static RDFDatatype createSimpleConcreteRDFDatatype(IRI datatypeIRI, TermTypeAncestry parentAncestry,
-                                                       Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                                       SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         return new SimpleRDFDatatype(datatypeIRI, parentAncestry, closestDBTypeFct);
     }
 

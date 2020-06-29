@@ -9,6 +9,7 @@ import it.unibz.inf.ontop.model.type.DBTermType;
 import it.unibz.inf.ontop.model.type.RDFDatatype;
 import it.unibz.inf.ontop.model.type.RDFTermType;
 import it.unibz.inf.ontop.model.type.TermTypeInference;
+import it.unibz.inf.ontop.utils.SerFunc;
 import org.apache.commons.rdf.api.IRI;
 
 import java.util.Optional;
@@ -17,18 +18,18 @@ import java.util.function.Function;
 
 public class UnaryNumericSPARQLFunctionSymbolImpl extends ReduciblePositiveAritySPARQLFunctionSymbolImpl {
 
-    private final Function<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct;
+    private final SerFunc<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct;
 
     protected UnaryNumericSPARQLFunctionSymbolImpl(String officialName,
                                                    RDFDatatype abstractNumericType,
-                                                   Function<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct) {
+                                                   SerFunc<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct) {
         super("SP_" + officialName, officialName, ImmutableList.of(abstractNumericType));
         this.dbFunctionSymbolFct = dbFunctionSymbolFct;
     }
 
     protected UnaryNumericSPARQLFunctionSymbolImpl(String functionSymbolName, IRI functionIRI,
                                                    RDFDatatype abstractNumericType,
-                                                   Function<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct) {
+                                                   SerFunc<DBTermType, DBFunctionSymbol> dbFunctionSymbolFct) {
         super(functionSymbolName, functionIRI, ImmutableList.of(abstractNumericType));
         this.dbFunctionSymbolFct = dbFunctionSymbolFct;
     }

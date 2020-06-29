@@ -4,21 +4,20 @@ import it.unibz.inf.ontop.model.type.DBTermType;
 import it.unibz.inf.ontop.model.type.DBTypeFactory;
 import it.unibz.inf.ontop.model.type.RDFTermType;
 import it.unibz.inf.ontop.model.type.TermTypeAncestry;
+import it.unibz.inf.ontop.utils.SerFunc;
 
 import java.io.Serializable;
 import java.util.function.Function;
 
 public class RDFTermTypeImpl extends TermTypeImpl implements RDFTermType {
 
-    interface SerFunc<T,R> extends Function<T,R>, Serializable {}
-
-    private final Function<DBTypeFactory, DBTermType> closestDBTypeSupplier;
+    private final SerFunc<DBTypeFactory, DBTermType> closestDBTypeSupplier;
 
     /**
      * Concrete RDF term type
      */
     protected RDFTermTypeImpl(String name, TermTypeAncestry parentAncestry,
-                              Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                              SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         super(name, parentAncestry, false);
         this.closestDBTypeSupplier = closestDBTypeFct;
     }

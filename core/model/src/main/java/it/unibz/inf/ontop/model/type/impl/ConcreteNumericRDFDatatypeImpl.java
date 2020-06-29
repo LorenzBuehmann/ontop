@@ -1,6 +1,7 @@
 package it.unibz.inf.ontop.model.type.impl;
 
 import it.unibz.inf.ontop.model.type.*;
+import it.unibz.inf.ontop.utils.SerFunc;
 import org.apache.commons.rdf.api.IRI;
 
 import java.util.function.Function;
@@ -13,7 +14,7 @@ public class ConcreteNumericRDFDatatypeImpl extends SimpleRDFDatatype implements
     private ConcreteNumericRDFDatatypeImpl(IRI datatypeIRI, TermTypeAncestry parentAncestry,
                                            TypePropagationSubstitutionHierarchy promotedParentHierarchy,
                                            boolean appendToPromotedHierarchy,
-                                           Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                           SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         super(datatypeIRI, parentAncestry, closestDBTypeFct);
         promotedHierarchy = appendToPromotedHierarchy ?
                 promotedParentHierarchy.newHierarchy(this)
@@ -21,7 +22,7 @@ public class ConcreteNumericRDFDatatypeImpl extends SimpleRDFDatatype implements
     }
 
     private ConcreteNumericRDFDatatypeImpl(IRI datatypeIRI, TermTypeAncestry parentAncestry,
-                                           Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                           SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         super(datatypeIRI, parentAncestry, closestDBTypeFct);
         promotedHierarchy = new TypePropagationSubstitutionHierarchyImpl(this);
     }
@@ -44,7 +45,7 @@ public class ConcreteNumericRDFDatatypeImpl extends SimpleRDFDatatype implements
 
     static ConcreteNumericRDFDatatype createTopConcreteNumericTermType(IRI datatypeIRI,
                                                                        NumericRDFDatatype abstractParentDatatype,
-                                                                       Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                                                       SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         if (!abstractParentDatatype.isAbstract())
             throw new IllegalArgumentException("The parent datatype must be abstract");
 
@@ -53,7 +54,7 @@ public class ConcreteNumericRDFDatatypeImpl extends SimpleRDFDatatype implements
 
     static ConcreteNumericRDFDatatype createConcreteNumericTermType(IRI datatypeIRI, ConcreteNumericRDFDatatype parentDatatype,
                                                                     boolean appendToPromotedHierarchy,
-                                                                    Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                                                    SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         return new ConcreteNumericRDFDatatypeImpl(datatypeIRI, parentDatatype.getAncestry(),
                 parentDatatype.getPromotionSubstitutionHierarchy(), appendToPromotedHierarchy, closestDBTypeFct);
     }
@@ -61,7 +62,7 @@ public class ConcreteNumericRDFDatatypeImpl extends SimpleRDFDatatype implements
     static ConcreteNumericRDFDatatype createConcreteNumericTermType(IRI datatypeIRI, TermTypeAncestry parentAncestry,
                                                                     TypePropagationSubstitutionHierarchy promotedParentHierarchy,
                                                                     boolean appendToPromotedHierarchy,
-                                                                    Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                                                    SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
 
         return new ConcreteNumericRDFDatatypeImpl(datatypeIRI, parentAncestry, promotedParentHierarchy,
                 appendToPromotedHierarchy, closestDBTypeFct);

@@ -9,11 +9,12 @@ import it.unibz.inf.ontop.model.term.functionsymbol.InequalityLabel;
 import it.unibz.inf.ontop.model.term.functionsymbol.db.*;
 import it.unibz.inf.ontop.model.type.*;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
-public abstract class AbstractSQLDBFunctionSymbolFactory extends AbstractDBFunctionSymbolFactory {
+public abstract class AbstractSQLDBFunctionSymbolFactory extends AbstractDBFunctionSymbolFactory  implements Serializable {
 
     protected static final String UPPER_STR = "UPPER";
     protected static final String UCASE_STR = "UCASE";

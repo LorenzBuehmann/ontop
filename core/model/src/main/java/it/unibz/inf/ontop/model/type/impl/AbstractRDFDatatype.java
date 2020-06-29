@@ -6,6 +6,7 @@ import it.unibz.inf.ontop.model.type.RDFDatatype;
 import it.unibz.inf.ontop.model.type.TermTypeAncestry;
 import it.unibz.inf.ontop.model.vocabulary.RDFS;
 import it.unibz.inf.ontop.model.vocabulary.XSD;
+import it.unibz.inf.ontop.utils.SerFunc;
 import org.apache.commons.rdf.api.IRI;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public abstract class AbstractRDFDatatype extends RDFTermTypeImpl implements RDF
      * Concrete
      */
     protected AbstractRDFDatatype(IRI datatypeIRI, TermTypeAncestry parentAncestry,
-                                  Function<DBTypeFactory, DBTermType> closestDBTypeFct) {
+                                  SerFunc<DBTypeFactory, DBTermType> closestDBTypeFct) {
         super(extractIRIString(datatypeIRI), parentAncestry, closestDBTypeFct);
         this.datatypeIRI = datatypeIRI;
     }

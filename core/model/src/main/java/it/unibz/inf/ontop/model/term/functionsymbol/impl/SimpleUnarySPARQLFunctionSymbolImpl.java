@@ -7,24 +7,26 @@ import it.unibz.inf.ontop.model.term.ImmutableTerm;
 import it.unibz.inf.ontop.model.term.TermFactory;
 import it.unibz.inf.ontop.model.type.RDFTermType;
 import it.unibz.inf.ontop.model.type.TermTypeInference;
+import it.unibz.inf.ontop.utils.SerBiFunc;
 import org.apache.commons.rdf.api.IRI;
 
 import javax.annotation.Nonnull;
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
 
-public class SimpleUnarySPARQLFunctionSymbolImpl extends ReduciblePositiveAritySPARQLFunctionSymbolImpl {
+public class SimpleUnarySPARQLFunctionSymbolImpl extends ReduciblePositiveAritySPARQLFunctionSymbolImpl implements Serializable {
 
     private final RDFTermType inputType;
     private final RDFTermType targetType;
     private final boolean isAlwaysInjective;
-    private final BiFunction<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct;
+    private final SerBiFunc<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct;
 
     protected SimpleUnarySPARQLFunctionSymbolImpl(@Nonnull String name, IRI functionIRI,
                                                   RDFTermType inputType, RDFTermType targetType,
                                                   boolean isAlwaysInjective,
-                                                  BiFunction<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct) {
+                                                  SerBiFunc<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct) {
         super(name, functionIRI, ImmutableList.of(inputType));
         this.inputType = inputType;
         this.targetType = targetType;
@@ -35,7 +37,7 @@ public class SimpleUnarySPARQLFunctionSymbolImpl extends ReduciblePositiveArityS
     protected SimpleUnarySPARQLFunctionSymbolImpl(@Nonnull String name, String officialName,
                                                   RDFTermType inputType, RDFTermType targetType,
                                                   boolean isAlwaysInjective,
-                                                  BiFunction<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct) {
+                                                  SerBiFunc<TermFactory, ImmutableTerm, ImmutableFunctionalTerm> dbFunctionalTermFct) {
         super(name, officialName, ImmutableList.of(inputType));
         this.inputType = inputType;
         this.targetType = targetType;
