@@ -13,6 +13,7 @@ import it.unibz.inf.ontop.model.type.TermTypeInference;
 import org.apache.commons.rdf.api.IRI;
 
 import javax.annotation.Nonnull;
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -118,7 +119,7 @@ public class MultitypedInputUnarySPARQLFunctionSymbolImpl extends ReduciblePosit
     }
 
     @FunctionalInterface
-    public interface TriFunction<T, U, V, R> {
+    public interface TriFunction<T, U, V, R> extends Serializable {
         R apply(T var1, U var2, V var3);
     }
 }
