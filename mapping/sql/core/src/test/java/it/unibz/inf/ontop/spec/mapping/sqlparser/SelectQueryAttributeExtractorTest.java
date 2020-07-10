@@ -18,9 +18,20 @@ public class SelectQueryAttributeExtractorTest {
         OfflineMetadataProviderBuilder builder = createMetadataProviderBuilder();
         MetadataLookup metadataLookup = builder.build();
         QuotedIDFactory idfac = metadataLookup.getQuotedIDFactory();
-        DefaultSelectQueryAttributeExtractor ae = new DefaultSelectQueryAttributeExtractor(metadataLookup, TERM_FACTORY);
-        RAExpressionAttributes r = ae.getRAExpressionAttributes("SELECT 1 AS A");
-        assertEquals(ImmutableSet.of(new QualifiedAttributeID(null, idfac.createAttributeID("A"))), r.getAttributes().keySet());
+        DefaultSelectQueryAttributeExtractor ae = new DefaultSelectQueryAttributeExtractor(metadataLookup, CORE_SINGLETONS);
+        RAExpressionAttributes r = ae.getRAExpressionAttributes(JSqlParserTools.parse("SELECT 1 AS A"));
+        assertEquals(ImmutableSet.of(idfac.createAttributeID("A")), r.getUnqualifiedAttributes().keySet());
+    }
+
+    @Test // issue 184
+    public void test_order() throws Exception {
+        OfflineMetadataProviderBuilder builder = createMetadataProviderBuilder();
+        builder.createDatabaseRelation("demographics", "STUDY_ID", builder.getDBTypeFactory().getDBLargeIntegerType(), false);
+        MetadataLookup metadataLookup = builder.build();
+        QuotedIDFactory idfac = metadataLookup.getQuotedIDFactory();
+        DefaultSelectQueryAttributeExtractor ae = new DefaultSelectQueryAttributeExtractor(metadataLookup, CORE_SINGLETONS);
+        RAExpressionAttributes r = ae.getRAExpressionAttributes(JSqlParserTools.parse("select STUDY_ID, patient_name(STUDY_ID) as label from demographics order by STUDY_ID limit 50"));
+        assertEquals(ImmutableSet.of(idfac.createAttributeID("study_id"), idfac.createAttributeID("label")), r.getUnqualifiedAttributes().keySet());
     }
 
     @Test
